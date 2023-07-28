@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 
   std::unique_ptr<Cpmk> cpmk = std::make_unique<Cpmk>(argv[1], argv[2]);
 
-  setup_project(std::move(cpmk));
+  cpmk->setup_project();
 
   return 0;
 }

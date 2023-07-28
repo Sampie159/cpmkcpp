@@ -14,21 +14,21 @@ static void create_files(const std::string &project_path,
  *                          PUBLIC FUNCTIONS                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-void setup_project(std::unique_ptr<Cpmk> cpmk) {
-  if (!is_valid(cpmk->language)) {
-    std::cout << "Invalid language: " << cpmk->language << "\n";
+void Cpmk::setup_project() {
+  if (!is_valid(this->language)) {
+    std::cout << "Invalid language: " << this->language << "\n";
     std::cout << "Please try again with \"c\" or \"cpp\".\n";
 
     return;
   }
 
   std::string cwd = std::filesystem::current_path();
-  std::string project_path = cwd + "/" + cpmk->project_name;
+  std::string project_path = cwd + "/" + this->project_name;
 
   create_directories(project_path);
-  create_files(project_path, cpmk->project_name, cpmk->language);
+  create_files(project_path, this->project_name, this->language);
 
-  std::cout << "Project \"" << cpmk->project_name
+  std::cout << "Project \"" << this->project_name
             << "\" created successfully.\n";
 }
 
